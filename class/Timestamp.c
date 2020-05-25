@@ -13,7 +13,7 @@ class Timestamp
      * @param {int} minute
      * @param {int} second
      * 
-     * @return Timestamp in MS
+     * @return Timestamp in Seconds
      */
     static int Calcul(int year, int month, int day, int hour, int minute, int second)
     {
@@ -40,7 +40,7 @@ class Timestamp
         timestamp += hour * 3600;
         timestamp += minute * 60;
         timestamp += second;
-        return timestamp * 1000;
+        return timestamp;
     }
 
     static bool IsLeapYear(int year)
