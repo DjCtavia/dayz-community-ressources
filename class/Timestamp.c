@@ -15,17 +15,17 @@ class Timestamp
      * 
      * @return Timestamp in Seconds
      */
-    static int Calcul(int year, int month, int day, int hour, int minute, int second)
+    static int Calcul(int year, int month, int day, int hours, int minutes, int seconds)
     {
-        bool isLeapYear = IsLeapYear();
+        const bool isLeapYear = IsLeapYear(year);
         int timestamp = 0;
 
         for (int iYear = 1970; iYear < year; ++iYear)
         {
-            if (iYear % 4)
-                timestamp += 86400 * 365;
+            if (isLeapYear(iYear))
+                timestamp += 31622400‬;
             else
-                timestamp += 86400 * 366;
+                timestamp += 31536000‬;
         }
         for (int iMonth = 0; iMonth < month; iMonth++)
         {
@@ -37,9 +37,9 @@ class Timestamp
         {
             timestamp += 86400;
         }
-        timestamp += hour * 3600;
-        timestamp += minute * 60;
-        timestamp += second;
+        timestamp += hours * 3600;
+        timestamp += minutes * 60;
+        timestamp += seconds;
         return timestamp;
     }
 
